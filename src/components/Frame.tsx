@@ -142,6 +142,11 @@ export default function Frame() {
           paddingRight: context?.client.safeAreaInsets?.right ?? 0,
         }}
       >
+        <Progress
+          currentStep={quizState.currentQuestion}
+          totalSteps={quizState.questions.length}
+          className="mb-4"
+        />
         <ExampleCard />
       </div>
     </QuizContainer>
