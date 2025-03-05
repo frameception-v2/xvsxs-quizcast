@@ -3,7 +3,7 @@ Here's the dependency-ordered implementation checklist:
 ### Phase 1: Foundation
 - [ ] Create Next.js 14 TS project using template (scaffolding)  
 - [x] Define base CSS variables in globals.css (mobile styling foundation)  
-- [ ] Add empty API routes: /api/neynar and /api/degen (endpoint scaffolding)  
+- [x] Add empty API routes: /api/neynar and /api/degen (endpoint scaffolding)  
 - [ ] Create QuizState interface in types.ts (type safety foundation)  
 - [ ] Implement URL hash sync in useQuizState hook (state persistence)  
 - [ ] Add localStorage backup in useQuizState (state recovery)  
