@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useState, useMemo } from "react";
 
 import { useQuizState } from "../hooks/useQuizState";
+import { QuizContainer } from "~/components/QuizContainer";
 import sdk, {
   AddFrame,
   SignIn as SignInCore,
