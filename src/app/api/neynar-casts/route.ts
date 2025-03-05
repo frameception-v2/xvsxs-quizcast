@@ -21,7 +21,7 @@ export const GET = async (req: Request) => {
     const client = new NeynarAPIClient({
       apiKey: process.env.NEYNAR_API_KEY!
     });
-    const casts = await client.fetchAllCastsCreatedByUser(parseInt(parsedParams.data.fid), {
+    const casts = await client.fetchAllCastsByUser(parseInt(parsedParams.data.fid), {
       limit: 100,
     });
 
