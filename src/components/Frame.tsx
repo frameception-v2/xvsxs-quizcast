@@ -1,6 +1,61 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useMemo } from "react";
+
+interface QuizState {
+  currentQuestion: number;
+  score: number;
+  walletAddress: string | null;
+  questions: Array<{
+    question: string;
+    options: string[];
+    correctAnswer: string;
+  >;
+}
+
+function useQuizState() {
+  const [state, setState] = useState<QuizState>({
+    currentQuestion: 0,
+    score: 0,
+    walletAddress: null,
+    questions: []
+  });
+
+  // Get initial state from URL hash or localStorage
+  useEffect(() => {
+    const hashState = window.location.hash.slice(1);
+    const savedState = localStorage.getItem('quizState');
+    
+    const initialData = hashState ? JSON.parse(decodeURIComponent(hashState)) 
+                       : savedState ? JSON.parse(savedState)
+                       : null;
+
+    if (initialData) {
+      setState(initialData);
+    }
+  }, []);
+
+  // Update both URL hash and localStorage on state changes
+  const updateState = useCallback((newState: Partial<QuizState>) => {
+    setState(prev => {
+      const merged = {...prev, ...newState};
+      const stateString = JSON.stringify(merged);
+      
+      // Update URL hash without reload
+      window.history.replaceState(null, '', `#${encodeURIComponent(stateString)}`);
+      
+      // Backup to localStorage
+      localStorage.setItem('quizState', stateString);
+      
+      return merged;
+    });
+  }, []);
+
+  return useMemo(() => ({
+    quizState: state,
+    updateQuizState: updateState
+  }), [state, updateState]);
+}
 import sdk, {
   AddFrame,
   SignIn as SignInCore,
@@ -39,6 +94,7 @@ function ExampleCard() {
 }
 
 export default function Frame() {
+  const { quizState, updateQuizState } = useQuizState();
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<Context.FrameContext>();
 
