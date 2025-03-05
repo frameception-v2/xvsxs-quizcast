@@ -10,7 +10,7 @@ Here's the dependency-ordered implementation checklist:
 - [x] Create validation util for walletAddress (security foundation)  
 
 ### Phase 2: Data Integration
-- [ ] Implement Neynar API auth in /api/neynar-casts (secure API access)  
+- [x] Implement Neynar API auth in /api/neynar-casts (secure API access)  
 - [ ] Add FID parameter validation middleware (input safety)  
 - [ ] Create Redis caching layer for cast data (performance)  
 - [ ] Build useFetchCasts hook with SWR (data fetching)  
