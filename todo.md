@@ -5,7 +5,7 @@ Here's the dependency-ordered implementation checklist:
 - [x] Define base CSS variables in globals.css (mobile styling foundation)  
 - [x] Add empty API routes: /api/neynar and /api/degen (endpoint scaffolding)  
 - [x] Create QuizState interface in types.ts (type safety foundation)  
-- [ ] Implement URL hash sync in useQuizState hook (state persistence)  
+- [x] Implement URL hash sync in useQuizState hook (state persistence)  
 - [ ] Add localStorage backup in useQuizState (state recovery)  
 - [ ] Create validation util for walletAddress (security foundation)  
 
