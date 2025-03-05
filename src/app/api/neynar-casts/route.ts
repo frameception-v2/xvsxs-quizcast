@@ -18,7 +18,9 @@ export const GET = async (req: Request) => {
       );
     }
 
-    const client = new NeynarAPIClient(process.env.NEYNAR_API_KEY!);
+    const client = new NeynarAPIClient({
+      apiKey: process.env.NEYNAR_API_KEY!
+    });
     const casts = await client.fetchAllCastsCreatedByUser(parseInt(parsedParams.data.fid), {
       limit: 100,
     });
