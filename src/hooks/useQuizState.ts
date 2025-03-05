@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ethers } from "ethers";
 
 export interface QuizState {
   walletAddress: string;
@@ -56,7 +55,7 @@ export function useQuizState() {
   });
 
   const validateState = (newState: QuizState) => {
-    if (!ethers.isAddress(newState.walletAddress)) {
+    if (!/^0x[a-fA-F0-9]{40}$/.test(newState.walletAddress)) {
       throw new Error("Invalid wallet address");
     }
     if (!Array.isArray(newState.questions) || newState.questions.length === 0) {
