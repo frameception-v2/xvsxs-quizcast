@@ -2,21 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  /* Mobile-first spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
+  /* Mobile-first spacing system */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
   
-  /* Typography */
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
+  /* Primary color palette */
+  --primary-50: 239 246 255;
+  --primary-100: 219 234 254;
+  --primary-500: 139 92 246;  /* Purple-500 */
+  --primary-600: 124 58 237;  /* Purple-600 */
+  
+  /* Border radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
   
   /* Touch targets */
   --touch-min: 48px;
+  
+  /* Font sizes */
+  --text-xs: 0.75rem;  /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem;  /* 20px */
+
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -116,5 +129,11 @@
   .touch-target {
     min-width: var(--touch-min);
     min-height: var(--touch-min);
+  }
+
+  /* Prevent zoom on mobile inputs */
+  input, textarea, button, select {
+    touch-action: manipulation;
+    font-size: var(--text-base);
   }
 }
