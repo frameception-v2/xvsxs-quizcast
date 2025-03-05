@@ -24,7 +24,7 @@ import { useSession } from "next-auth/react";
 import { createStore } from "mipd";
 import { Label } from "~/components/ui/label";
 import { PROJECT_TITLE } from "~/lib/constants";
-import { Progress } from "~/components/ui/progress";
+import { ProgressBar } from "~/components/ui/progress-bar";
 
 function ExampleCard() {
   return (
@@ -143,10 +143,10 @@ export default function Frame() {
           paddingRight: context?.client.safeAreaInsets?.right ?? 0,
         }}
       >
-        <Progress
-          currentStep={quizState.currentQuestion}
+        <ProgressBar
+          currentStep={quizState.currentQuestion + 1}
           totalSteps={quizState.questions.length}
-          className="mb-4"
+          className="mb-4 h-2"
         />
         <ExampleCard />
       </div>
